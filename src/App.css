@@ -81,6 +81,25 @@
 .content .container .btn .penIcon{
   margin-right: 10px;
 }
+.content .container .submit{
+  display: inline-block;
+  padding: 10px 15px;
+  font-size: 15px;
+}
+.content .container form{
+  text-align: center;
+}
+.content .container form input{
+  padding: 10px;
+  background-color: transparent;
+  color: var(--myBlue);
+  border: none;
+  border-bottom: 1px solid var(--myBlue);
+  margin-right: 10px;
+}
+.content .container form input:focus{
+  outline: none;
+}
 .page .content .container .notes{
   display: grid;
   grid-template-columns: repeat(auto-fill,minmax(450px,1fr));
