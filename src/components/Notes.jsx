@@ -6,7 +6,7 @@ function Notes(props) {
     <div className="notes">
         {
             props.yourNotes.map((note)=>{
-                return <Note key={note._id} nt={note}/>
+                return <Note key={note._id} nt={note} yourNotes={props.yourNotes} setYourNotes={props.setYourNotes} />
             })
         }
     </div>

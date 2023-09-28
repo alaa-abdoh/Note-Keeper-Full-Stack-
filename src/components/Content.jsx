@@ -57,7 +57,7 @@ function Content(){
                     <Form onSubmit={handleSubmit} /> 
                 )    
                 }
-                <Notes yourNotes={yourNotes}/>
+                <Notes yourNotes={yourNotes} setYourNotes={setYourNotes}/>
             </div>
         </div>
     )
