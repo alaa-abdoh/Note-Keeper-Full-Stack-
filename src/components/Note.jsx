@@ -1,9 +1,12 @@
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import {faTrash, faPencil} from '@fortawesome/free-solid-svg-icons';
 import Swal from 'sweetalert2'
-
+import { useState } from 'react';
+import Button from './Button';
 function Note(props){
     let {nt} = props;
+    let [isEditing, setIsEditing] = useState(false);
+    let [newValue, setNewValue] = useState(nt.content)
     let date, time;
     function extractDateAndTime(dateStr){
         const objDate = new Date(dateStr);
@@ -11,7 +14,7 @@ function Note(props){
         time = objDate.getHours() + ":" + objDate.getMinutes();
     }
     extractDateAndTime(nt.createdAt)
-    
+
     function handleDelete(id){
         Swal.fire({
             title: 'Cation!',
@@ -47,6 +50,25 @@ function Note(props){
             }
           })
     }
+    function handleClickSave(){
+        fetch(`http://localhost:3100/notes/${nt._id}`,{
+        method:"put",
+        headers: { 
+                "Content-Type": "application/json",
+            },
+            body:JSON.stringify({
+                content : newValue
+            })
+    }).then(()=>{
+        let newNotes = props.yourNotes.map((ele)=>{
+            if(ele._id == nt._id)
+                return { ...ele, content: newValue };
+            else return ele
+        })
+        props.setYourNotes(newNotes)
+    })
+    setIsEditing(false)
+    }
     return (
         <div className="note">
             <div className="header">
@@ -55,11 +77,20 @@ function Note(props){
                     <span>{date}</span>
                     <span>{time}</span>
                 </div>
-            </div>  <p className="body">{nt.content}</p>
-          
+            </div>
+            {
+                !isEditing ? <p className="body">{nt.content}</p> : (
+                    <form className="body" >
+                        <input value={newValue} onChange={(e)=>{setNewValue(e.target.value)}} style={{width:"100%", color:"black"}} autoFocus type="text"/>
+                    </form>
+                )
+            }                 
             <div className="footer">
                 <FontAwesomeIcon onClick={()=> handleDelete(nt._id)} icon={faTrash} className='icon' title='Delete'/>
-                <FontAwesomeIcon icon={faPencil} className='icon' title='Edit'/>
+                {
+                    !isEditing ? <FontAwesomeIcon onClick={()=> setIsEditing(true)} icon={faPencil} className='icon' title='Edit'/> :
+                    <Button onClick={handleClickSave} submit={true}>Save</Button>
+                }
             </div>
         </div>
     )
