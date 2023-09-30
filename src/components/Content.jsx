@@ -8,6 +8,7 @@ import Swal from 'sweetalert2'
 
 function Content(){
     let [isAdding, setIsAdding] = useState(false)
+    let [isDataCome, setIsDataCome] = useState(false)
     let [yourNotes, setYourNotes] = useState([]);
 
     useEffect(() => {
@@ -15,6 +16,7 @@ function Content(){
         .then(async (res) => await res.json())
         .then((data) => {
           setYourNotes(data.note);
+          setIsDataCome(true)
         });
     }, []);
 
@@ -57,7 +59,7 @@ function Content(){
                     <Form onSubmit={handleSubmit} /> 
                 )    
                 }
-                <Notes yourNotes={yourNotes} setYourNotes={setYourNotes}/>
+                <Notes yourNotes={yourNotes} setYourNotes={setYourNotes} isDataCome={isDataCome}/>
             </div>
         </div>
     )

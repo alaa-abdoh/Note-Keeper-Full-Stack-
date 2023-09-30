@@ -3,7 +3,7 @@ import Note from "./Note";
 function Notes(props) {
  
   return (      
-           props.yourNotes.length == 0 ?
+           !props.isDataCome ?
               <div className="loader"><div></div></div>
             
            :(
