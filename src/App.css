@@ -150,6 +150,7 @@
   flex: 1;
   padding: 10px 30px;
   border-bottom: 1px solid #0000004f;
+  overflow: auto;
 }
 .page .content .container .notes .note .footer{
   padding: 10px 55px;
