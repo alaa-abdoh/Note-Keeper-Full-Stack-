@@ -5,7 +5,7 @@ function Notes(props) {
   return (      
            !props.isDataCome ?
               <div className="loader"><div></div></div>
-            
+              : props.yourNotes.length ==0 ? <div className="emptyNotes">You dont have notes yet</div>  
            :(
              <div className="notes">
               {
