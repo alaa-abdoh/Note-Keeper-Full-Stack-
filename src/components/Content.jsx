@@ -1,65 +1,33 @@
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import {faPen} from '@fortawesome/free-solid-svg-icons';
-import Button from "./Button"
 import Notes from './Notes';
-import Form from './Form';
 import { useState, useEffect } from 'react';
-import Swal from 'sweetalert2'
+import AddNewNote from './AddNote';
 
 function Content(){
-    let [isAdding, setIsAdding] = useState(false)
-    let [isDataCome, setIsDataCome] = useState(false)
-    let [yourNotes, setYourNotes] = useState([]);
+    let [data, setData] = useState({
+        notes:[],
+        isLoading:true,
+        error: ""
+        })
 
     useEffect(() => {
       fetch("http://localhost:3100/notes")
         .then(async (res) => await res.json())
-        .then((data) => {
-          setYourNotes(data.note);
-          setIsDataCome(true)
-        });
+        .then((Data) => {
+          setData({...data, notes:Data.note, isLoading:false})
+        }).catch((error)=>{
+            setData({ ...data, isLoading: false, error: error.message });
+        })
     }, []);
+    
+    function handleAddNoteSuccess(note){
+        setData({...data, notes:[...data.notes, note]})
+    }
 
-    function handleClick(){
-        setIsAdding(true)
-    }
-    function handleSubmit(title, content){
-        fetch("http://localhost:3100/notes", {
-            method:"post",
-            headers:{
-                "Content-Type": "application/json"
-            },
-            body:JSON.stringify({
-                title:title,
-                content:content
-            })
-        }).then((res)=>res.json()) 
-        .then((data) => setYourNotes([...yourNotes, data.note]) )
-        .then(
-            Swal.fire({
-                title: 'Success',
-                text: 'Your new Note added successfully',
-                icon: 'success',
-                confirmButtonText:"OK",
-                confirmButtonColor:"#14d1d1"
-              })
-        )
-        setIsAdding(false)
-    }
     return(
         <div className="content">
             <div className="container">
-                {!isAdding ? 
-                    <Button onClick={handleClick}>
-                        <FontAwesomeIcon icon={faPen} className='penIcon'/>
-                        New Note
-                    </Button>
-                :
-                (
-                    <Form onSubmit={handleSubmit} /> 
-                )    
-                }
-                <Notes yourNotes={yourNotes} setYourNotes={setYourNotes} isDataCome={isDataCome}/>
+                <AddNewNote onAddNoteSuccess={handleAddNoteSuccess}/>
+                <Notes data={data} setData={setData} />
             </div>
         </div>
     )
