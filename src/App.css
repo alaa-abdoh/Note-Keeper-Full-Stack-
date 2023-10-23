@@ -1,38 +1,192 @@
-.App {
+:root{
+  --myBlue : #14d1d1;
+}
+*{
+  -moz-box-sizing: border-box;
+  -ms-box-sizing: border-box;
+  -webkit-box-sizing: border-box;
+  box-sizing: border-box;
+  padding: 0;
+  margin: 0;
+}
+.container{
+  margin-left: auto;
+  margin-right: auto;
+  padding-left: 15px;
+  padding-right: 15px;
+}
+@media (min-width:768px) {
+  .container{
+      width:750px;
+  }
+}
+@media (min-width:992px) {
+  .container{
+      width:970px;
+  }
+}
+@media (min-width:1200px) {
+  .container{
+      width:1170px;
+  }
+}
+.page{
+  background-color: black;
+  min-height: 100vh;
+}
+.page .intro{
+  padding: 50px 0;
+  text-align: center;
+  
+}
+.page .intro .container div{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 25px;
+}
+.page .intro .container div .noteIcon{
+  color: var(--myBlue);
+}
+.page .intro .container div h1{
+  color: white;
+  margin-left: 30px;
+}
+.page .intro .container p{
+  color: white;
+  font-size: 19px;
+}
+.page .intro .container p span{
+  font-size: 22px;
+}
+.page .content .container{
+  padding: 30px;
+  border: 1px solid #26292b; 
+}
+.content .container .btn{
+  background-color: var(--myBlue);
+  padding: 12px 25px;
+  border: none;
+  border-radius: 20px;
+  font-size: 18px;
+  color: white;
+  cursor: pointer;
+  transition: opacity 0.3s linear;
+  margin: 0 auto;
+  display: flex;
+}
+.content .container .btn:hover{
+  opacity: 0.8;
+}
+.content .container .btn .penIcon{
+  margin-right: 10px;
+}
+.content .container .submit{
+  display: inline-block;
+  padding: 10px 15px;
+  font-size: 15px;
+  margin: 0;
+  margin-right: 5px;
+}
+.content .container form{
   text-align: center;
 }
-
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+.content .container form input{
+  padding: 10px;
+  background-color: transparent;
+  color: var(--myBlue);
+  border: none;
+  border-bottom: 1px solid var(--myBlue);
+  margin-right: 10px;
 }
-
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
+.content .container form input:focus{
+  outline: none;
+}
+.page .content .container .emptyNotes{
+  margin-top: 30px;
+  color: white;
+  font-size:20px;
+  text-align: center;
+}
+.page .content .container .notes{
+  display: grid;
+  grid-template-columns: repeat(auto-fill,minmax(400px,1fr));
+  gap: 25px;
+  margin-top: 30px;
+  max-height: 80vh;
+  overflow: auto;
+}
+@media (max-width:767px){
+  .page .content .container .notes{
+    grid-template-columns: repeat(auto-fill,minmax(100%,1fr));
   }
 }
-
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
+.page .content .container .notes .note{
+  background-color: #e7e7e7;
+  height: 200px;
+  border-radius: 150px;
   display: flex;
   flex-direction: column;
+}
+.page .content .container .notes .note .header{
+  border-bottom: 1px solid #0000004f;
+  padding: 10px 55px;
+  display: flex;
+  justify-content: space-between;
   align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
 }
-
-.App-link {
-  color: #61dafb;
+.page .content .container .notes .note .header .title{
+  flex: 1;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
 }
-
-@keyframes App-logo-spin {
-  from {
+.page .content .container .notes .note .header div{
+  font-size: 14px;
+}
+.page .content .container .notes .note .header div span:first-child{
+  margin-right: 5px;
+}
+.page .content .container .notes .note .body{
+  flex: 1;
+  padding: 10px 30px;
+  border-bottom: 1px solid #0000004f;
+  overflow: auto;
+}
+.page .content .container .notes .note .footer{
+  padding: 10px 55px;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+}
+.page .content .container .notes .note .footer .icon{
+  color: var(--myBlue);
+  font-size: 18px;
+  cursor: pointer;
+  transition: color 0.3s linear;
+}
+.page .content .container .notes .note .footer .icon:hover{
+  opacity: 0.5;
+}
+.loader{
+  width: 100%;
+  margin-top: 30px;
+}
+.loader div{
+  width:80px;
+  height: 80px;
+  border-radius: 50%;
+  border: 5px solid var(--myBlue);
+  border-right: none;
+  border-top: none;
+  animation: loaderRotate 1s linear infinite ;
+  margin: 0 auto;
+}
+@keyframes loaderRotate {
+  0%{
     transform: rotate(0deg);
   }
-  to {
+  100%{
     transform: rotate(360deg);
   }
 }
