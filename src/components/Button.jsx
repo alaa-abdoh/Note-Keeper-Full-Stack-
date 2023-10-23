@@ -1,6 +1,6 @@
 function Button({children, onClick, submit}){
     return (
-        <button className={submit?"submit btn" : "btn"} onClick={onClick} type={submit ? "submit" : ""}>
+        <button className={`${submit?"submit":""} btn`} onClick={onClick} type={submit ? "submit" : ""}>
             {children}
         </button>
     )

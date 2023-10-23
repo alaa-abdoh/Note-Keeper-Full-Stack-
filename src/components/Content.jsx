@@ -5,22 +5,25 @@ import AddNewNote from './AddNote';
 function Content(){
     let [data, setData] = useState({
         notes:[],
-        isLoading:true,
+        isLoading:false,
         error: ""
         })
 
     useEffect(() => {
-      fetch("http://localhost:3100/notes")
-        .then(async (res) => await res.json())
-        .then((Data) => {
-          setData({...data, notes:Data.note, isLoading:false})
-        }).catch((error)=>{
-            setData({ ...data, isLoading: false, error: error.message });
-        })
-    }, []);
+      async function foo() {
+       try{
+            let obj= await (await fetch("http://localhost:3100/notes")).json();
+            setData({...data, notes:obj.note, isLoading:true})
+       }catch(e){
+            setData({ ...data, isLoading: true, error: e.message });
+       }
+      }
+      foo()
+    })     
     
     function handleAddNoteSuccess(note){
         setData({...data, notes:[...data.notes, note]})
+        console.log(data.notes)
     }
 
     return(

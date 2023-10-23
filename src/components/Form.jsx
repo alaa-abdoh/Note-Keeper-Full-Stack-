@@ -1,23 +1,21 @@
+import { useState } from "react";
 import Button from "./Button";
+
 function Form(props) {
+  let [title, setTitle] = useState();
+  let [content, setContent] = useState();
   return (
     <form
       onSubmit={(e) => {
         e.preventDefault();
-        const title = e.target.querySelector(
-          'input[placeholder="Title"]'
-        ).value;
-        const content = e.target.querySelector(
-          'input[placeholder="Content"]'
-        ).value;
         props.onSubmit({
           title,
           content,
         });
       }}
     >
-      <input type="text" placeholder="Title" id="title" />
-      <input type="text" placeholder="Content" id="content" />
+      <input onChange={(e)=>{setTitle(e.target.value)}} type="text" placeholder="Title" id="title" />
+      <input onChange={(e)=>{setContent(e.target.value)}} type="text" placeholder="Content" id="content" />
       <Button submit={true}>Add</Button>
       <Button submit={true} onClick={props.onClick}>Cancel</Button>
     </form>

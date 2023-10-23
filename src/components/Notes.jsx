@@ -1,4 +1,3 @@
-import { useEffect, useState } from "react";
 import Swal from "sweetalert2";
 import Note from "./Note";
 
@@ -21,17 +20,19 @@ function Notes(props) {
   )
 }
 
-  const handleDelceteNote = (id) =>{   
-    fetch(`http://localhost:3100/notes/${id}`, {
-      method: "delete",
-    })
-      .then((res) => res.json())
-      .then(
+  const handleDelceteNote = async (id) =>{     
+      try{
+        await (await fetch(`http://localhost:3100/notes/${id}`, {
+          method: "delete",
+        })).json();
         props.setData({
           ...props.data,
           notes: props.data.notes.filter((el) => el._id !== id),
         })
-      ).then(()=>{showSuccessMessage()})
+        showSuccessMessage()
+      }catch(e){
+
+      }
   }
 
   const showSuccessMessage = () => {
@@ -44,25 +45,27 @@ function Notes(props) {
       })
   }
 
-  const handleSaveEditNote = (id, newValue) =>{
-    fetch(`http://localhost:3100/notes/${id}`, {
-      method: "put",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify({
-        content: newValue,
-      }),
-    }).then(() => {
+  const handleSaveEditNote =async (id, newValue) =>{
+    try{
+      await (await fetch (`http://localhost:3100/notes/${id}`, {
+        method: "put",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          content: newValue,
+        }),
+      })).json();
       let newNotes = props.data.notes.map((ele) => {
         if (ele._id == id) return { ...ele, content: newValue };
         else return ele;
       });
       props.setData({ ...props.data, notes: newNotes });
-    });
+    }catch(e){
+    }
   }
 
-  if (props.data.isLoading)
+  if (!props.data.isLoading)
     return (
       <div className="loader">
         <div></div>
