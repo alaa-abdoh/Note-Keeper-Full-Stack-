@@ -1,71 +1,27 @@
-# Getting Started with Create React App
+# This project (Note Keeper) has BackEnd Stored Locally on my Device, so I can't put deploy link for it.
+The Backend side done using node.js and remote mongo DB
+This project Done for trainig on state, rerender of pages, conditional rendering and more
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+### Here ara the photos of project while it runing...
 
-## Available Scripts
+## This is the main page and here at first the notes whic stored in DB will shown 
 
-In the project directory, you can run:
+![main](https://github.com/alaa-abdoh/fullStackNoteTask/assets/114018618/5405bfb1-d5f0-476d-a57b-8816ff4365a4)
 
-### `npm start`
+## Here we can Add new Note to DB
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+![add](https://github.com/alaa-abdoh/fullStackNoteTask/assets/114018618/5e8d0831-4d3e-4a60-b95f-784c647b3775)
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+## If the add operation done successfully, this popup will appear 
 
-### `npm test`
+![addSuccess](https://github.com/alaa-abdoh/fullStackNoteTask/assets/114018618/e8224b60-b7f5-42ef-98a8-923193fdd712)
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+## Here we can Edit the content of Note already exist in DB
 
-### `npm run build`
+![Edit](https://github.com/alaa-abdoh/fullStackNoteTask/assets/114018618/7b4b9e97-8367-47c6-91c0-2459f5a11b34)
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+## And if we want delete Note 
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+![delete](https://github.com/alaa-abdoh/fullStackNoteTask/assets/114018618/7c5e994c-2678-4437-8dc6-1163cfa6bda5)
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
-
-### `npm run eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
-
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
-
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
-"# fullStackNoteTask" 
+ 
