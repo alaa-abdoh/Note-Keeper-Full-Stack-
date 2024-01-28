@@ -1,10 +1,14 @@
-# React.js project
+# 🔥 Note Keeper 🔥
 
-# This project (Note Keeper) has BackEnd Stored Locally on my Device, so I can't put deploy link for it.
+Welcome to my project! It's great to have you here. 😉
+
+## This project (Note Keeper) has BackEnd Stored Locally on my Device, so I can't put deploy link for it.
 The Backend side done using node.js and remote mongo DB
 This project Done for trainig on state, rerender of pages, conditional rendering and more
 
-### Here ara the photos of project while it runing...
+Skills: React.js, JSX, CSS, mongodb, node.js and express js 
+
+### Here ara the photos of project while it runing, Take Look ! ❤️ ...
 
  This is the main page and here at first the notes whic stored in DB will shown 
 
